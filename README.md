@@ -8,7 +8,9 @@
 
 ## Инструкция по запуску
 1. Скачать репозиторий к себе на компьютер при помощи команды:
-    '''git clone https://github.com/niksuf/DigitalFilter'''
+    '''
+	git clone https://github.com/niksuf/DigitalFilter
+	'''
 2. Установить расширение для Python (нужно для графического пользовательского интерфейса):
     pip install PyQt5
 3. Запустить приложение командой:

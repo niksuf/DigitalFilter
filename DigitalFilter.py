@@ -3,13 +3,6 @@ from PyQt5 import uic
 from matplotlib import pyplot as pp
 from math import exp
 
-app = QApplication([])
-ui = uic.loadUi("form.ui")
-ui.setWindowTitle("DigFil")
-ui.show()
-ui.spinBox.setValue(1000)
-ui.doubleSpinBox.setValue(30)
-ui.radioButton.setChecked(True)
 
 def IntCircuit (M, t):
     X = [0] * M
@@ -34,6 +27,7 @@ def IntCircuit (M, t):
     pp.plot(Y)
     pp.show()
 
+
 def DiffCircuit (M, t):
     X = [0] * M
     impulseMin = int(M * 0.3)
@@ -56,6 +50,7 @@ def DiffCircuit (M, t):
     pp.plot(Y)
     pp.show()
 
+
 def onClick():
     M = ui.spinBox.value()
     t = ui.doubleSpinBox.value()
@@ -63,7 +58,15 @@ def onClick():
         IntCircuit (M, t)
     if (ui.radioButton_2.isChecked()):
         DiffCircuit (M, t)
-      
-ui.pushButton.clicked.connect(onClick)
 
-exit(app.exec())
+
+if __name__ == '__main__':
+    app = QApplication([])
+    ui = uic.loadUi("form.ui")
+    ui.setWindowTitle("DigFil")
+    ui.show()
+    ui.spinBox.setValue(1000)
+    ui.doubleSpinBox.setValue(30)
+    ui.radioButton.setChecked(True)
+    ui.pushButton.clicked.connect(onClick)
+    exit(app.exec())

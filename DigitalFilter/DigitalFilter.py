@@ -3,9 +3,6 @@ from PyQt5 import uic
 from matplotlib import pyplot as pp
 from math import exp
 
-from MplForWidget import MyMplCanvas
-from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
-
 
 def int_circuit(m, t):
     x = [0] * m

@@ -7,60 +7,60 @@ from MplForWidget import MyMplCanvas
 from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
 
 
-def IntCircuit(M, t):
-    X = [0] * M
-    impulseMin = int(M * 0.3)
-    impulseMax = int(M * 0.6)
-    for i in range (impulseMin, impulseMax):
-        X[i] = 1
+def int_circuit(m, t):
+    x = [0] * m
+    impulse_min = int(m * 0.3)
+    impulse_max = int(m * 0.6)
+    for i in range(impulse_min, impulse_max):
+        x[i] = 1
     # X - исходный сигнал (прямоугольный импульс)
-    Y = [0] * len(X)
-    pp.plot(X)
-    H = [0] * M
-    SH = 0
-    for i in range (0, M):
-        H[i] = (1 / t) * exp(-i / t)
-        SH += H[i]
-        if SH >= 1:
-            SH -= H[i]
+    y = [0] * len(x)
+    pp.plot(x)
+    h = [0] * m
+    sh = 0
+    for i in range(0, m):
+        h[i] = (1 / t) * exp(-i / t)
+        sh += h[i]
+        if sh >= 1:
+            sh -= h[i]
             break
-    for i in range(len(H)):
-        for j in range(len(H)):
-            Y[i] += H[j] * X[i - j]
-    pp.plot(Y)
+    for i in range(len(h)):
+        for j in range(len(h)):
+            y[i] += h[j] * x[i - j]
+    pp.plot(y)
     pp.show()
 
 
-def DiffCircuit(M, t):
-    X = [0] * M
-    impulseMin = int(M * 0.3)
-    impulseMax = int(M * 0.6)
-    for i in range(impulseMin, impulseMax):
-        X[i] = 1
-    Y = [0] * len(X)
-    pp.plot(X)
-    H = [0] * M
-    SH = 0
-    for i in range(0, M):
-        H[i] = (1 / t) * (1 - exp(-i / t))
-        SH += H[i]
-        if SH >= 0.9905:
-            SH -= H[i]
+def diff_circuit(m, t):
+    x = [0] * m
+    impulse_min = int(m * 0.3)
+    impulse_max = int(m * 0.6)
+    for i in range(impulse_min, impulse_max):
+        x[i] = 1
+    y = [0] * len(x)
+    pp.plot(x)
+    h = [0] * m
+    sh = 0
+    for i in range(0, m):
+        h[i] = (1 / t) * (1 - exp(-i / t))
+        sh += h[i]
+        if sh >= 0.9905:
+            sh -= h[i]
             break
-    for i in range(len(H)):
-        for j in range(len(H)):
-            Y[j] += H[i] * X[j - i]
-    pp.plot(Y)
+    for i in range(len(h)):
+        for j in range(len(h)):
+            y[j] += h[i] * x[j - i]
+    pp.plot(y)
     pp.show()
 
 
 def onClick():
-    M = ui.spinBox.value()
+    m = ui.spinBox.value()
     t = ui.doubleSpinBox.value()
     if ui.radioButton.isChecked():
-        IntCircuit(M, t)
+        int_circuit(m, t)
     if ui.radioButton_2.isChecked():
-        DiffCircuit(M, t)
+        diff_circuit(m, t)
 
 
 if __name__ == '__main__':

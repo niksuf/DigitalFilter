@@ -3,8 +3,11 @@ from PyQt5 import uic
 from matplotlib import pyplot as pp
 from math import exp
 
+from MplForWidget import MyMplCanvas
+from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
 
-def IntCircuit (M, t):
+
+def IntCircuit(M, t):
     X = [0] * M
     impulseMin = int(M * 0.3)
     impulseMax = int(M * 0.6)
@@ -21,28 +24,28 @@ def IntCircuit (M, t):
         if SH >= 1:
             SH -= H[i]
             break
-    for i in range (len(H)):
-        for j in range (len(H)):
+    for i in range(len(H)):
+        for j in range(len(H)):
             Y[i] += H[j] * X[i - j]
     pp.plot(Y)
     pp.show()
 
 
-def DiffCircuit (M, t):
+def DiffCircuit(M, t):
     X = [0] * M
     impulseMin = int(M * 0.3)
     impulseMax = int(M * 0.6)
-    for i in range (impulseMin, impulseMax):
+    for i in range(impulseMin, impulseMax):
         X[i] = 1
     Y = [0] * len(X)
     pp.plot(X)
     H = [0] * M
     SH = 0
-    for i in range (0, M):
+    for i in range(0, M):
         H[i] = (1 / t) * (1 - exp(-i / t))
         SH += H[i]
         if SH >= 0.9905:
-            SH -= H [i]
+            SH -= H[i]
             break
     for i in range(len(H)):
         for j in range(len(H)):
@@ -54,16 +57,16 @@ def DiffCircuit (M, t):
 def onClick():
     M = ui.spinBox.value()
     t = ui.doubleSpinBox.value()
-    if (ui.radioButton.isChecked()):
-        IntCircuit (M, t)
-    if (ui.radioButton_2.isChecked()):
-        DiffCircuit (M, t)
+    if ui.radioButton.isChecked():
+        IntCircuit(M, t)
+    if ui.radioButton_2.isChecked():
+        DiffCircuit(M, t)
 
 
 if __name__ == '__main__':
     app = QApplication([])
     ui = uic.loadUi("form.ui")
-    ui.setWindowTitle("DigFil")
+    ui.setWindowTitle("Digital Filter")
     ui.show()
     ui.spinBox.setValue(1000)
     ui.doubleSpinBox.setValue(30)

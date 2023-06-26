@@ -11,11 +11,15 @@
 ```
 git clone https://github.com/niksuf/DigitalFilter
 ```
-2. Установить расширение для Python (нужно для графического пользовательского интерфейса):
+2. Перейти в папку проекта:
 ```
-pip install PyQt5
+cd DigitalFilter/DigitalFilter
 ```
-3. Запустить приложение командой:
+3. Установить зависимости при помощи команды:
+```
+pip install -r requirements.txt
+```
+4. Запустить приложение командой:
 ```
 python DigitalFilter.py
 ```

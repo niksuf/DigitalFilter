@@ -1,9 +1,9 @@
 .idea
-\DigitalFilter\__pycache__\
-\DigitalFilter\venv\
-\DigitalFilter\DigitalFilter.pyproject.user
-\DigitalFilter\main.py
-\DigitalFilter\main2.py
-\DigitalFilter\main3.py
-\DigitalFilter\MplForWidget.py
-\DigitalFilter\test.py
+/DigitalFilter/__pycache__/
+/DigitalFilter/venv/
+/DigitalFilter/DigitalFilter.pyproject.user
+/DigitalFilter/main.py
+/DigitalFilter/main2.py
+/DigitalFilter/main3.py
+/DigitalFilter/MplForWidget.py
+/DigitalFilter/test.py
